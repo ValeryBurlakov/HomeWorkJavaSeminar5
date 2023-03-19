@@ -41,7 +41,7 @@ public class test {
 
         // проходимся по мэпу и выводим слова
         for (Map.Entry<Integer, List<String>> entry : stats.entrySet()) {
-            // System.out.println("Длина слова = " + entry.getKey() + "  Список слов = " + entry.getValue());           
+            
             // пока первый ключ, проходимся по списку длян
             for (int index = 0; index < words.size(); index++) {
                 Integer elementLength = words.get(index).length();
@@ -49,14 +49,15 @@ public class test {
             //     adds.add("0");
             // если ключ соответствует длине слова, выводим слово
             if (elementLength.equals(entry.getKey()) == true) {
-                // adds.add(words.get(index));
-                System.out.println(words.get(index));
+                // System.out.println(words.get(index));
                 adds.add(words.get(index));
+                // stats.put(elementLength, adds);
             }
             // adds.removeAll(adds);
             
             }
-            System.out.println(adds);
+            // System.out.println(adds);
+            System.out.println("Длина " + entry.getKey() + "  Список слов = " + entry.getValue());           
             adds.removeAll(adds);
         }
          
