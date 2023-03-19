@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class programm5 {
+public class test {
     public static void main(String[] args) {
         String text = "й r. ew извлечь из него все слова, и отсортировать; по длине. Мороз и солнце- день чудесный Еще ты дремлешь друг прелестный Пора красавица проснись";
         String result = text.replaceAll("(?U)[^\\p{L}\\p{N}\\s]+", "");
@@ -26,44 +26,41 @@ public class programm5 {
     }
     static void collectStats(String text, ArrayList<String> words, Map<Integer, List<String>> stats, ArrayList<Integer> sizeWords) {
         List<String> adds = new ArrayList<String>();
-
+        // у нас ест список размеров слов
         for (int index = 0; index < words.size(); index++) {
             Integer elementLength = words.get(index).length();
             sizeWords.add(elementLength);
         }
         System.out.println(sizeWords); // получили размеры слов
-
-        for (int i = 0; i < words.size(); i++) {
-            Integer elementLength = words.get(i).length(); // длина каждого слова
-            String element = words.get(i); // каждое слово
-            // adds.add(element);
-            // Integer t = 1;
-            // System.out.println(stats);
-
-            
-            for (int j = 0; j < words.size(); j++) {
-                if (sizeWords.get(j) == i) {
-                    adds.add(element);
-                    stats.put(sizeWords.get(j), adds);
-                    // j++;
-                    // t++;
-                    // System.out.println(i);
-                } 
-                else {
-
-                    // j++;
-                }
-            }
- 
-            // t++;
-            //  else {
-            //     t = t + 1;
-            // }
-
+        // нужно добавить в список слова с определенный размеров
+        for (int i = 0; i < sizeWords.size(); i++) {
+            Integer wordLength = sizeWords.get(i);
+            // System.out.println(sizeWords.get(i));
+            stats.put(wordLength, adds);
         }
+
+        // проходимся по мэпу и выводим слова
+        for (Map.Entry<Integer, List<String>> entry : stats.entrySet()) {
+            System.out.println("Длина слова = " + entry.getKey() + "  Список слов = " + entry.getValue());           
+            Integer r = entry.getKey();
+            for (int index = 0; index < words.size(); index++) {
+                Integer elementLength = words.get(index).length();
+            //     sizeWords.add(elementLength);
+            //     adds.add("0");
+            if (elementLength.equals(entry.getKey()) == true) {
+                System.out.println(words.get(index));
+            }
+            }
+            
+        }
+         
+        System.out.println();
+
+        //     adds.add(element);
+
         
         // Set<Integer> keys = stats.keySet();
-        System.out.println(stats);
+        // System.out.println(stats);
         // System.out.println(keys);
         // ArrayList<String> list = new ArrayList<>(List.of("3e19d", "3.14F", "string", "-7j", "444.444d", "5.0439", "1.1E+50", "-12", "my_value", "23.04j"));
         // System.out.println(list);
@@ -76,16 +73,3 @@ public class programm5 {
         // System.out.println(words);
     }
 }
-
-
-/**
- * Есть тест. Нужно извлечь из него все слова и отсортировать по длине.
- * Мороз и солнце день чудесный Еще ты дремлешь друг прелестный Пора красавица проснись
- *
- * и
- * ты
- * Еще
- * день друг Пора
- * ..
- *
- */
