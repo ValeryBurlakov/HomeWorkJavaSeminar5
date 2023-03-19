@@ -6,7 +6,7 @@ import java.util.Map;
 public class programm5 {
     public static void main(String[] args) {
         String text = "й r. ew извлечь из него все слова Ростов-на-Дону, и отсортировать; по длине. Мороз и солнце- день чудесный Еще ты дремлешь друг прелестный Пора красавица проснись";
-        String result = text.replaceAll("(?U)[^\\p{L}\\p{N}\\s]+", "-");
+        String result = text.replaceAll("(?U)[^\\p{L}\\p{N}\\-\\s]+", "");
         Map<Integer, List<String>> stats = new HashMap<>();
         /**
          * (?U) - пробельные символы (оставляем)
@@ -58,7 +58,6 @@ public class programm5 {
             adds.removeAll(adds); // очищаем список слов одинаковой длины
         }
          
-       
     }
     static void gettingElement(String text, List<String> words, String result) { // получили элементы
         for (String wordss : result.split("[ -]+")) {
