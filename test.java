@@ -19,13 +19,13 @@ public class test {
          * ]+ - конец символьного класса (быстрое удаление)
          * "Есть текст. Нужно извлечь из него все слова, и отсортировать; по длине. Мороз и солнце- день чудесный Еще ты дремлешь друг прелестный Пора красавица проснись"
          */
-        ArrayList<String> words = new ArrayList<>();
-        ArrayList<Integer> sizeWords = new ArrayList<>();
+        ArrayList<String> words = new ArrayList<>(); // слова
+        ArrayList<Integer> sizeWords = new ArrayList<>(); // список длин слов
         addPrintElement(text, words, result);
         collectStats(text, words, stats, sizeWords);
     }
     static void collectStats(String text, ArrayList<String> words, Map<Integer, List<String>> stats, ArrayList<Integer> sizeWords) {
-        List<String> adds = new ArrayList<String>();
+        List<String> adds = new ArrayList<String>(); // список слов одной длины
         // у нас ест список размеров слов
         for (int index = 0; index < words.size(); index++) {
             Integer elementLength = words.get(index).length();
@@ -41,20 +41,26 @@ public class test {
 
         // проходимся по мэпу и выводим слова
         for (Map.Entry<Integer, List<String>> entry : stats.entrySet()) {
-            System.out.println("Длина слова = " + entry.getKey() + "  Список слов = " + entry.getValue());           
-            Integer r = entry.getKey();
+            // System.out.println("Длина слова = " + entry.getKey() + "  Список слов = " + entry.getValue());           
+            // пока первый ключ, проходимся по списку длян
             for (int index = 0; index < words.size(); index++) {
                 Integer elementLength = words.get(index).length();
             //     sizeWords.add(elementLength);
             //     adds.add("0");
+            // если ключ соответствует длине слова, выводим слово
             if (elementLength.equals(entry.getKey()) == true) {
+                // adds.add(words.get(index));
                 System.out.println(words.get(index));
+                adds.add(words.get(index));
             }
-            }
+            // adds.removeAll(adds);
             
+            }
+            System.out.println(adds);
+            adds.removeAll(adds);
         }
          
-        System.out.println();
+        // System.out.println();
 
         //     adds.add(element);
 
